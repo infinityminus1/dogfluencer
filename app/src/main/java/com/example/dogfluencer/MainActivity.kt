@@ -10,10 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.dogfluencer.ui.main.SectionsPagerAdapter
+import com.example.dogfluencer.ui.main.TotalsFragment
+import com.example.dogfluencer.ui.main.dummy.DummyContent
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TotalsFragment.OnListFragmentInteractionListener {
+    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
+        return
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private fun generateEventCreationButtons() {
         // Linear Layout inside the HorizontalScrollView will be button parent.
