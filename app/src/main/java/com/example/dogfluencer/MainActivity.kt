@@ -11,14 +11,20 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.dogfluencer.ui.main.SectionsPagerAdapter
 import com.example.dogfluencer.ui.main.TotalsFragment
-import com.example.dogfluencer.ui.main.dummy.DummyContent
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity(), TotalsFragment.OnListFragmentInteractionListener {
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
-        return
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun onListFragmentInteraction(item: Event?) {
+        println("shutupaboutthesun")
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun generateSchedules() {
+        for (eventType in eventTypes) {
+            schedules[eventType.first] = Schedule(eventType.first)
+        }
     }
 
     private fun generateEventCreationButtons() {
@@ -52,7 +58,8 @@ class MainActivity : AppCompatActivity(), TotalsFragment.OnListFragmentInteracti
                         .setAction("Action", null).show()
 
                 // TODO: description should come from user input
-                addEvent(eventEmoji.toString(), null)
+                val name = eventEmoji.toString()
+                schedules[name]?.addEvent(null, name)
             }
 
             parentButtonHolder.addView(text)

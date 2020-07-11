@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dogfluencer.Event
 import com.example.dogfluencer.R
-import com.example.dogfluencer.ui.main.dummy.DummyContent
-import com.example.dogfluencer.ui.main.dummy.DummyContent.DummyItem
+import com.example.dogfluencer.schedules
 
 /**
  * A fragment representing a list of Items.
@@ -42,11 +41,8 @@ class TotalsFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyTotalsRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                layoutManager = LinearLayoutManager(context)
+                adapter = MyTotalsRecyclerViewAdapter(schedules, listener)
             }
         }
         return view
@@ -78,8 +74,7 @@ class TotalsFragment : Fragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: Event?)
     }
 
     companion object {

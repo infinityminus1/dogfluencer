@@ -12,20 +12,24 @@ var eventTypes = mutableListOf(
 
 data class Event(val description: String?, val name: String, val time: LocalDateTime)
 
-class Schedule {
-    private val timeDataPoints = mutableListOf<Event>()
-    fun addEvent(description: String?, name: String, time: LocalDateTime) {
-        this.timeDataPoints.add(Event(description, name, time))
+/**
+ * A class which contains all the data points for a particular type of event.
+ * E.g. pooping or eating
+ */
+class Schedule (name: String) {
+    private val events = mutableListOf<Event>()
+    val name = name
+
+    fun addEvent(description: String?, name: String) {
+        val time = LocalDateTime.now()
+        this.events.add(Event(description, name, time))
     }
-}
 
-fun addEvent(name: String, description: String?){
-    val time = LocalDateTime.now()
-    schedules[name]?.addEvent(description, name, time)
-}
+    fun getTotalEvents(): Int {
+        return this.events.size
+    }
 
-fun generateSchedules() {
-    for (eventType in eventTypes) {
-        schedules[eventType.first] = Schedule()
+    fun getMostRecentEvent(): Event {
+        return this.events.last()
     }
 }
