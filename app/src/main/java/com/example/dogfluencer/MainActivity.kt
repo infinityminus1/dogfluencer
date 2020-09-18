@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.dogfluencer.ui.main.SectionsPagerAdapter
 import com.example.dogfluencer.ui.main.TotalsFragment
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity(), TotalsFragment.OnListFragmentInteracti
                 // TODO: description should come from user input
                 val name = eventEmoji.toString()
                 schedules[name]?.addEvent(null, name)
+
+                // Update recycler view
+                val recyclerViewAdapter = findViewById<RecyclerView>(R.id.list).adapter
+                recyclerViewAdapter?.notifyDataSetChanged()
+
             }
 
             parentButtonHolder.addView(text)
